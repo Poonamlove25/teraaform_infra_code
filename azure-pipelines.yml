@@ -23,8 +23,8 @@ stages:
             workingDirectory: '$(System.DefaultWorkingDirectory)/parent_module'
             backendServiceArm: 'service_connection'
             backendAzureRmResourceGroupName: 'RgssSs'
-            backendAzureRmStorageAccountName: 'Storage99'
-            backendAzureRmContainerName: 'Container'
+            backendAzureRmStorageAccountName: 'storage99'
+            backendAzureRmContainerName: 'container'
             backendAzureRmKey: 'terraform.tfstate'
 
         - task: TerraformTask@5
