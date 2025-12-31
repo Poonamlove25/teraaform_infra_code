@@ -1,0 +1,44 @@
+trigger:
+ branches:
+   include:
+     - main
+
+pool: pool
+
+stages:
+  - stage: terraforminitandapply
+    displayName: terraform init and apply
+    jobs:
+      - job: terraforminit
+        displayName: terraforM init
+        steps:
+        - task: TerraformInstaller@1
+          inputs:
+            terraformVersion: 'latest'
+        
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/parent_module'
+            backendServiceArm: 'service_connection'
+            backendAzureRmResourceGroupName: 'RgssSs'
+            backendAzureRmStorageAccountName: 'Storage99'
+            backendAzureRmContainerName: 'Container'
+            backendAzureRmKey: 'terraform.tfstate'
+
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/parent_module'
+            environmentServiceNameAzureRM: 'service_connection'
+        
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'apply'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/parent_module'
+            environmentServiceNameAzureRM: 'service_connection'
+
+      
