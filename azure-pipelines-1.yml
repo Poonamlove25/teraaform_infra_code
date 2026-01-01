@@ -42,5 +42,8 @@ stages:
             provider: 'azurerm'
             command: 'apply'
             workingDirectory: '$(System.DefaultWorkingDirectory)/parent_module'
+            commandOptions: '-auto -approved'
             environmentServiceNameAzureRM: 'service_connection'
             
+        
+        
