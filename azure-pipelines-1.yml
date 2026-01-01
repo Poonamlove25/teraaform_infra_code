@@ -24,10 +24,10 @@ stages:
             command: 'init'
             workingDirectory: '$(System.DefaultWorkingDirectory)/parent_module'
             backendServiceArm: 'service_connection'
-            backendAzureRmResourceGroupName: 'rgssssss'
-            backendAzureRmStorageAccountName: 'Storageatg96897'
-            backendAzureRmContainerName: 'Container'
-            backendAzureRmKey: 'teraform.tfstate'
+            backendAzureRmResourceGroupName: 'RgssSs'
+            backendAzureRmStorageAccountName: 'storage99877'
+            backendAzureRmContainerName: 'container'
+            backendAzureRmKey: 'terraform.tfstate'
 
         - task: TerraformTask@5
           inputs:
